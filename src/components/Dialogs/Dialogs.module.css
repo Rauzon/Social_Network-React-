@@ -1,0 +1,45 @@
+.dialogs {
+
+}
+.dialogWrapper{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+    padding: 15px;
+
+}
+.dialog{
+    padding-left:15px;
+    background-color: #7dc930;
+}
+.masseges {
+    padding-left: 15px;
+    background-color: #7dc930;
+}
+.dialogItem {
+    margin: 10px 0px;
+}
+.massege{
+    margin: 10px 0px;
+}
+.dialogItem a{
+    margin: 10px 0px;
+    text-decoration: none;
+}
+.dialogText {
+
+}
+.dialogText_textarea {
+    width: 500px;
+    hight:70px;
+    resize: none;
+    padding: 5px;
+    color: darkslategray;
+    font-family:"Arial sans-serif";
+}
+.dialogText_button {
+    display: block;
+    margin-top: 10px;
+
+}
+
