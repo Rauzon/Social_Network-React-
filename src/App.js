@@ -20,7 +20,7 @@ import {BrowserRouter, Route} from "react-router-dom";
                     <Header/>
                     <Nav/>
                     <div className="wrapper-dialog">
-                        <Route path='/profile' render={() => <ProfileContent dataPost={props.store.ProfileData} addPost={props.addPost} changeText={props.changeText}/>}/>
+                        <Route path='/profile' render={() => <ProfileContent dataPost={props.store.ProfileData} dispatch={props.dispatch} />}/>
                         <Route path='/dialogs'
                                render={() => <Dialogs dialog={props.store.DialogData} message={props.store.DialogData}/>}/>
                         <Route path='/news' render={() => <News/>}/>

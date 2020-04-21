@@ -4,7 +4,6 @@ import NewPost from "./NewPost/NewPost";
 
 
 const MyPosts = (props) => {
-debugger;
     const myPosts = props.dataPost.myPostData.map((post) => {
         return(
             <MyPost  content={post.content} />
@@ -14,7 +13,7 @@ debugger;
     return (
         <div>
             Page's posts
-            <NewPost addPost={props.addPost} dataPost={props.dataPost} changeText={props.changeText}/>
+            <NewPost dispatch={props.dispatch} dataPost={props.dataPost} />
             <div>
                 {myPosts}
             </div>

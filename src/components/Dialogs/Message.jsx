@@ -15,10 +15,6 @@ const Message = (props) => {
             <div className={dialogStyle.massege}>
                 {props.message}
             </div>
-            <div className={dialogStyle.dialogText}>
-                <textarea className={dialogStyle.dialogText_textarea} ref={input}></textarea>
-                <button className={dialogStyle.dialogText_button} onClick={addInput}>Отправить</button>
-            </div>
         </div>
     );
 }

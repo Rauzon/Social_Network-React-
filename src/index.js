@@ -9,8 +9,7 @@ export let rerenderDom = (state) => {
         <React.StrictMode>
             <BrowserRouter>
                 <App store={store.getState()}
-                     changeText={store.changeText.bind(store)}
-                     addPost={store.addPost.bind(store)}/>
+                     dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')

@@ -21,7 +21,15 @@ const Dialogs = (props) => {
                     {dialoges}
                 </div>
                 <div className={dialogStyle.masseges}>
-                    {messages}
+                    <div>
+                        {messages}
+                    </div>
+                    <div>
+                        <div><textarea /></div>
+                        <div>
+                            <button>Send</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
