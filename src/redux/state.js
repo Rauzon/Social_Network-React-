@@ -4,7 +4,6 @@ const ADDPOST = "ADDPOST",
       UPDATE_NEW_MESSAGE = "UPDATE_NEW_MESSAGE";
 
 
-
 let store = {
     _state : {
         ProfileData : {
@@ -19,9 +18,9 @@ let store = {
                 {name: "Antonio", link: "/dialogs/3"}],
             messagesData : [{message: "Hey, What's up?"},
                 {message: "I don't want"},
-                {message: "You knew about it"},
-                {newMessage: ""}
-                ]
+                {message: "You knew about it"}
+                ],
+            newMessage: ""
         }
     },
     getState() {
@@ -45,13 +44,14 @@ let store = {
         this._rerenderDom(this._state);
     },
     _addNewMessage(){
-        let textBody = this._state.DialogData.messagesData.newMessage;
-        this._state.DialogData.messagesData.push(textBody);
-        this._rerenderDom(this._state);
+        let textBody = this._state.DialogData.newMessage;
+        this._state.DialogData.messagesData.push({message: textBody});
         textBody = "";
+        this._rerenderDom(this._state);
+
     },
     _updateNewMessage(updateMessage){
-        this._state.DialogData.messagesData.newMessage = updateMessage;
+        this._state.DialogData.newMessage = updateMessage;
         this._rerenderDom(this._state);
     },
     dispatch(action){
@@ -85,4 +85,3 @@ export let updateMessageActionCreater = (message) =>{
 
 
 export default store;
-

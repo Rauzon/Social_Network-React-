@@ -15,20 +15,18 @@ import {BrowserRouter, Route} from "react-router-dom";
 
     const App = (props) => {
         return (
-            <BrowserRouter>
                 <div className="wrapper">
                     <Header/>
                     <Nav/>
                     <div className="wrapper-dialog">
                         <Route path='/profile' render={() => <ProfileContent dataPost={props.store.ProfileData} dispatch={props.dispatch} />}/>
                         <Route path='/dialogs'
-                               render={() => <Dialogs dialog={props.store.DialogData} message={props.store.DialogData}/>}/>
+                               render={() => <Dialogs message={props.store.DialogData} dispatch= {props.dispatch} />}/>
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/settings' render={() => <Settings/>}/>
                         <Route path='/music' render={() => <Music/>}/>
                     </div>
                 </div>
-            </BrowserRouter>
         );
     }
 
