@@ -1,7 +1,6 @@
-const ADDPOST = "ADDPOST",
-      CHANGETEXT = "CHANGETEXT",
-      ADD_NEW_MESSAGE = "ADD_NEW_MESSAGE",
-      UPDATE_NEW_MESSAGE = "UPDATE_NEW_MESSAGE";
+import {dialogDataReducer} from "./dialogData-reducer"
+import {profileDataReducer} from "./profileData-reducer"
+
 
 
 let store = {
@@ -32,56 +31,11 @@ let store = {
     sibscribe(observer) {
         this._rerenderDom = observer;
     },
-    _addPost() {
-        let newPost = {
-            content : this._state.ProfileData.myPostData.content
-        }
-        this._state.ProfileData.myPostData.push(newPost);
-        this._rerenderDom(this._state);
-    },
-    _changeText(updateValue) {
-        this._state.ProfileData.myPostData.content= updateValue;
-        this._rerenderDom(this._state);
-    },
-    _addNewMessage(){
-        let textBody = this._state.DialogData.newMessage;
-        this._state.DialogData.messagesData.push({message: textBody});
-        textBody = "";
-        this._rerenderDom(this._state);
-
-    },
-    _updateNewMessage(updateMessage){
-        this._state.DialogData.newMessage = updateMessage;
-        this._rerenderDom(this._state);
-    },
     dispatch(action){
-        if (action.type === "ADDPOST"){
-            this._addPost();
-        } else if (action.type === "CHANGETEXT"){
-            this._changeText(action.updateValue);
-        } else if(action.type === ADD_NEW_MESSAGE){
-            this._addNewMessage();
-        } else if(action.type === UPDATE_NEW_MESSAGE){
-            this._updateNewMessage(action.updateMessage);
-        }
+        this._state.ProfileData.myPostData = profileDataReducer(this._state.ProfileData.myPostData,action);
+        this._state.DialogData = dialogDataReducer(this._state.DialogData,action);
+        this._rerenderDom(this._state);
     }
 }
-
-export let addPostActionCreater = () => {
-    return { type: ADDPOST};
-} ;
-
-export let changeAreaActionCreater = (text) =>{
-    return {type: CHANGETEXT, updateValue: text };
-}
-
-export let addMessageActionCreater = () => {
-    return { type: ADD_NEW_MESSAGE};
-} ;
-
-export let updateMessageActionCreater = (message) =>{
-    return {type: UPDATE_NEW_MESSAGE, updateMessage: message };
-}
-
 
 export default store;

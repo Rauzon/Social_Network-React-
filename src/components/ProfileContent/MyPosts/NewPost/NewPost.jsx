@@ -1,16 +1,15 @@
 import React from "react";
 import newPostStyle from "./NewPosts.module.css";
-import {addPostActionCreater, changeAreaActionCreater} from "../../../../redux/state";
 
 const NewPost =(props) => {
 
     let newPostAreaContent = React.createRef();
     let addPost = () => {
-        props.dispatch(addPostActionCreater());
+        props.addPost();
     };
     let changeArea = () => {
       let text = newPostAreaContent.current.value;
-            props.dispatch(changeAreaActionCreater(text));
+        props.onChangeArea(text);
     };
 
 
@@ -20,7 +19,7 @@ const NewPost =(props) => {
                 new post
                 <div className={newPostStyle.newPost_textarea}>
                     <label>Content:</label>
-                    <textarea ref={newPostAreaContent} onChange={changeArea} value={props.dataPost.content}></textarea>
+                    <textarea ref={newPostAreaContent} onChange={changeArea} ></textarea>
                 </div>
                 <div className={newPostStyle.newPost_button}>
                     <button onClick={addPost}>Опубликовать</button>
