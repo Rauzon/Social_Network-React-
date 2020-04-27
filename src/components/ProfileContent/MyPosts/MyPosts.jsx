@@ -4,8 +4,7 @@ import NewPostContainer from "./NewPost/NewPostContainer";
 
 
 const MyPosts = (props) => {
-    let state = props.store.getState();
-    const myPosts = state.ProfileData.myPostData.map((post) => {
+    const myPosts = props.postsContent.map((post) => {
         return(
             <MyPost content={post.content} />
         );

@@ -11,17 +11,25 @@ let profileIntialization = {
 export const profileDataReducer = (state = profileIntialization,action) => {
 
     switch (action.type) {
-        case ADDPOST:
+        case ADDPOST: {
             let newPost = {
-                content : state.content
+                content: state.content
             }
-            state.myPostData.push(newPost);
-            return state
-        case CHANGETEXT:
-            state.content= action.updateValue;
-            return state
+            let stateCopy = {...state};
+            stateCopy.myPostData = [...state.myPostData]
+            stateCopy.myPostData.push(newPost);
+            return stateCopy
+        }
+        case CHANGETEXT:{
+            let stateCopy = {...state};
+            stateCopy.myPostData = [...state.myPostData];
+            stateCopy.myPostData.content = {...state.myPostData.content};
+            stateCopy.content= action.updateValue;
+            return stateCopy
+            }
         default:
             return state
+
     }
 }
 

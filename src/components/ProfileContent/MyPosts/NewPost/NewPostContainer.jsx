@@ -3,28 +3,6 @@ import {addPostActionCreater, changeAreaActionCreater} from "../../../../redux/p
 import NewPost from "./NewPost";
 import {connect} from "react-redux";
 
-// const NewPostContainer =(props) => {
-//
-//     let addPost = () => {
-//         props.store.dispatch(addPostActionCreater());
-//     };
-//     let onChangeArea = (text) => {
-//             props.store.dispatch(changeAreaActionCreater(text));
-//     };
-//
-//
-//     return(
-//         <div>
-//             <NewPost onChangeArea={onChangeArea} addPost={addPost}/>
-//         </div>
-//     );
-// }
-
-const mapStateToProps = (state) => {
-    return {
-
-    }
-} ;
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -37,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const NewPostContainer = connect(mapStateToProps, mapDispatchToProps)(NewPost);
+const NewPostContainer = connect(null,mapDispatchToProps)(NewPost);
 
 
 export default NewPostContainer;
