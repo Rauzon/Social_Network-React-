@@ -14,7 +14,7 @@ const MyPosts = (props) => {
     return (
         <div>
             Page's posts
-            <NewPostContainer store={props.store} />
+            <NewPostContainer  />
             <div>
                 {myPosts}
             </div>

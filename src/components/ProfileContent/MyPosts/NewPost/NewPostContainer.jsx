@@ -1,24 +1,43 @@
 import React from "react";
 import {addPostActionCreater, changeAreaActionCreater} from "../../../../redux/profileData-reducer";
 import NewPost from "./NewPost";
+import {connect} from "react-redux";
 
-const NewPostContainer =(props) => {
+// const NewPostContainer =(props) => {
+//
+//     let addPost = () => {
+//         props.store.dispatch(addPostActionCreater());
+//     };
+//     let onChangeArea = (text) => {
+//             props.store.dispatch(changeAreaActionCreater(text));
+//     };
+//
+//
+//     return(
+//         <div>
+//             <NewPost onChangeArea={onChangeArea} addPost={addPost}/>
+//         </div>
+//     );
+// }
 
-    let addPost = () => {
-        props.store.dispatch(addPostActionCreater());
-    };
-    let onChangeArea = (text) => {
-        debugger;
-            props.store.dispatch(changeAreaActionCreater(text));
-    };
+const mapStateToProps = (state) => {
+    return {
 
+    }
+} ;
 
-    return(
-        <div>
-            <NewPost onChangeArea={onChangeArea} addPost={addPost}/>
-        </div>
-    );
-}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onChangeArea: (text) => {
+            dispatch(changeAreaActionCreater(text));
+        },
+        addPost: () => {
+            dispatch(addPostActionCreater());
+        }
+    }
+};
+
+const NewPostContainer = connect(mapStateToProps, mapDispatchToProps)(NewPost);
 
 
 export default NewPostContainer;

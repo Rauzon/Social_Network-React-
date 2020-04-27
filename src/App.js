@@ -16,9 +16,9 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
                     <Header/>
                     <Nav/>
                     <div className="wrapper-dialog">
-                        <Route path='/profile' render={() => <ProfileContent store={props.store} />}/>
+                        <Route path='/profile' render={() => <ProfileContent  />}/>
                         <Route path='/dialogs'
-                               render={() => <DialogsContainer store={props.store} />}/>
+                               render={() => <DialogsContainer  />}/>
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/settings' render={() => <Settings/>}/>
                         <Route path='/music' render={() => <Music/>}/>
