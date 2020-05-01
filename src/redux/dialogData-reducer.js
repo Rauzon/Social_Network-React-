@@ -14,6 +14,14 @@ let dialogIntialization = {
     newMessage: ""
 }
 
+export let addMessageActionCreater = () => {
+    return { type: ADD_NEW_MESSAGE};
+} ;
+
+export let updateMessageActionCreater = (message) =>{
+    return {type: UPDATE_NEW_MESSAGE, updateMessage: message };
+}
+
 export const dialogDataReducer = (state = dialogIntialization,action) => {
     switch (action.type) {
         case ADD_NEW_MESSAGE: {
@@ -33,12 +41,4 @@ export const dialogDataReducer = (state = dialogIntialization,action) => {
         default:
             return state
     }
-}
-
-export let addMessageActionCreater = () => {
-    return { type: ADD_NEW_MESSAGE};
-} ;
-
-export let updateMessageActionCreater = (message) =>{
-    return {type: UPDATE_NEW_MESSAGE, updateMessage: message };
 }

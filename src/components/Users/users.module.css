@@ -1,0 +1,35 @@
+*, body {
+    box-sizing: border-box;
+}
+
+.content,
+.content__rightSide {
+    display: flex;
+}
+.content {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.content__leftSide {
+    margin-right: 40px;
+}
+.content__leftSide_img {
+    margin-bottom: 5px;
+}
+.content__leftSide_img img {
+    max-width: 100px;
+    max-height: 100px;
+}
+.content__leftSide_button button {
+    width: 100%;
+    padding: 5px;
+    background-color: #7edb40;
+    border: none;
+}
+.content__rightSide {
+    border: 1px solid #d2deca;
+    min-width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
