@@ -1,8 +1,14 @@
 .header {
     grid-area: header;
     background-color: #a5cf59;
+    position: relative;
   }
   .header img {
     width: 100px;
     height: 70px;
   }
+.header__loginLink  {
+    position: absolute;
+    bottom: 70%;
+    right: 10px;
+}

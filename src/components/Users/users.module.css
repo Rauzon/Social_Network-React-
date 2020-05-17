@@ -32,4 +32,9 @@
     padding: 20px;
     border-radius: 10px;
 }
-
+.strong {
+    font-weight: bold;
+}
+.loader {
+    background-color: #2b2e27;
+}

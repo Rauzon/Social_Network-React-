@@ -14,11 +14,11 @@ let dialogIntialization = {
     newMessage: ""
 }
 
-export let addMessageActionCreater = () => {
+export let addMessage = () => {
     return { type: ADD_NEW_MESSAGE};
 } ;
 
-export let updateMessageActionCreater = (message) =>{
+export let onChangeTextarea = (message) =>{
     return {type: UPDATE_NEW_MESSAGE, updateMessage: message };
 }
 

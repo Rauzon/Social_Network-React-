@@ -3,6 +3,7 @@ import dialogStyle from './Dialogs.module.css';
 import DialogItem from "./PartOfDilogs/DialogItem";
 import Message from "./PartOfDilogs/Message";
 
+
 const Dialogs = (props) => {
     let dialoges = props.dialogs.map((dialog) => {
         return (
@@ -24,6 +25,7 @@ const Dialogs = (props) => {
         let onTextareaTrigger = onTextareaLink.current.value;
         props.onChangeTextarea(onTextareaTrigger);
     };
+
 
     return (
         <div className={dialogStyle.dialogs}>
