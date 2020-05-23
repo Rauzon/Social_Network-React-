@@ -9,7 +9,7 @@ const ProfileInfo = (props) => {
         return <div className={profileInfoStyle.content__img_loader}><img src={loader} alt=""/></div>
     }
 
-    // Redirect to 'login'
+    // Redirect to 'login' (LoginComponent)
     if(!props.isLogining) return <Redirect to='/login' />
 
 
