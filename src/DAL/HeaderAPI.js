@@ -11,6 +11,13 @@ let instance = axios.create({
 export const headerAPI = {
 
     setAuth() {
-        return instance.get('auth/me')
+        return instance.get('auth/me');
+    },
+    putLogin(email, password, rememberMe = false) {
+        debugger
+        return instance.post(`auth/login`, {email, password, rememberMe});
+    },
+    deleteLogin() {
+        return instance.delete('auth/login');
     }
 }

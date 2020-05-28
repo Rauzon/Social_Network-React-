@@ -1,7 +1,6 @@
 import {profileAPI} from "../DAL/ProfileAPI";
 
 const ADDPOST = "ADDPOST",
-    CHANGETEXT = "CHANGETEXT",
     SET_USER_PROFILE = "SET_USER_PROFILE",
     GET_STATUS = "GET_STATUS";
 
@@ -18,20 +17,13 @@ export const profileDataReducer = (state = profileIntialization,action) => {
     switch (action.type) {
         case ADDPOST: {
             let newPost = {
-                content: state.content
+                content: action.newPost
             }
             let stateCopy = {...state};
             stateCopy.myPostData = [...state.myPostData]
             stateCopy.myPostData.push(newPost);
             return stateCopy
         }
-        case CHANGETEXT:{
-            let stateCopy = {...state};
-            stateCopy.myPostData = [...state.myPostData];
-            stateCopy.myPostData.content = {...state.myPostData.content};
-            stateCopy.content= action.updateValue;
-            return stateCopy
-            }
         case SET_USER_PROFILE:{
             return {
                 ...state,
@@ -52,13 +44,9 @@ export const profileDataReducer = (state = profileIntialization,action) => {
 
 //ActionCreators
 
-export let addPostActionCreater = () => {
-    return { type: ADDPOST};
+export let addPostActionCreater = (newPost) => {
+    return { type: ADDPOST, newPost};
 } ;
-
-export let changeAreaActionCreater = (text) =>{
-    return {type: CHANGETEXT, updateValue: text };
-}
 export let setUserProfile = (userProfile) =>{
     return {type: SET_USER_PROFILE, userProfile };
 }

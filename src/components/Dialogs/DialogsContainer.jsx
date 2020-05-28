@@ -2,7 +2,7 @@ import React from "react";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withRedirectComponent} from "../HOC/withAuthRedirect";
-import {addMessage, onChangeTextarea} from "../../redux/dialogData-reducer";
+import {addMessage} from "../../redux/dialogData-reducer";
 import {compose} from "redux";
 
 
@@ -16,11 +16,18 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return  {
+        addMessage: (newMessage) => {
+            dispatch(addMessage(newMessage))
+        }
+    }
+}
 
-const DialogsContainer = compose(connect(mapStateToProps, ({onChangeTextarea, addMessage})),
+
+const DialogsContainer = compose(connect(mapStateToProps, mapDispatchToProps),
         withRedirectComponent
     )
 (Dialogs);
-
 
 export default DialogsContainer;

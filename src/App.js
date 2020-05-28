@@ -9,7 +9,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {UsersCompose} from "./components/Users/UsersContainer";
 import {ProfileContentAPI} from "./components/ProfileContent/ProfileContentContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import {LoginComponent} from "./components/Header/LoginComponent";
+import {LoginComponentHOC} from "./components/Header/LoginComponent";
 
 
 
@@ -27,7 +27,7 @@ import {LoginComponent} from "./components/Header/LoginComponent";
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/settings' render={() => <Settings/>}/>
                         <Route path='/music' render={() => <Music/>}/>
-                        <Route path='/login' render={() => <LoginComponent />}/>
+                        <Route path='/login' render={() => <LoginComponentHOC />}/>
                     </div>
                 </div>
         );

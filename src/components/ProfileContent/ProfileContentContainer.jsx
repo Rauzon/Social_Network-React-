@@ -16,7 +16,6 @@ class ProfileContentContainer extends React.Component {
         if (!userId) {
              userId = 2;
         }
-        debugger
         this.props.setProfileThunk(userId);
         this.props.getStatusThunk(userId);
     }

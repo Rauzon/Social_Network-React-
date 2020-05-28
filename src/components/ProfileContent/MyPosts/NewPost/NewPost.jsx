@@ -1,29 +1,40 @@
 import React from "react";
 import newPostStyle from "./NewPosts.module.css";
+import {Field, reduxForm} from "redux-form";
+import {maxLength30Creator, required} from "../../Utilits/Validators/validator";
+import {ElementHOC} from "../../../ComponentForValidators/Textarea";
 
-const NewPost =(props) => {
+const maxLength30 = maxLength30Creator(30),
+    Textarea = ElementHOC('textarea'); // call in Field component for transfer to component;
 
-    let newPostAreaContent = React.createRef();
-    let addPost = () => {
-        props.addPost();
-    };
-    let changeArea = () => {
-      let text = newPostAreaContent.current.value;
-        props.onChangeArea(text);
-    };
+const FormNewPost = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div className={newPostStyle.newPost_textarea}>
+                <label>Content:</label>
+                <Field name={'textAreaAddPost'} component={Textarea}  placeholder={'enter text...'}
+                       validate={[required, maxLength30]} />
+            </div>
+            <div className={newPostStyle.newPost_button}>
+                <button>Опубликовать</button>
+            </div>
+        </form>
+    )
+}
 
+const ReduxFormNewPost = reduxForm({form: 'newPostForm'})(FormNewPost);
 
-    return(
+const NewPost = (props) => {
+    //for form
+    const onSubmit = (formData) => {
+        props.addPost(formData.textAreaAddPost);
+    }
+
+    return (
         <div>
             <div className={newPostStyle.newPost}>
                 new post
-                <div className={newPostStyle.newPost_textarea}>
-                    <label>Content:</label>
-                    <textarea ref={newPostAreaContent} onChange={changeArea} ></textarea>
-                </div>
-                <div className={newPostStyle.newPost_button}>
-                    <button onClick={addPost}>Опубликовать</button>
-                </div>
+                <ReduxFormNewPost {...props} onSubmit={onSubmit} />
             </div>
         </div>
     );

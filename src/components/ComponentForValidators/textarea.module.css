@@ -1,0 +1,8 @@
+.wrap__content.error textarea,
+.wrap__content.error input{
+    border: 1px solid #ff0000;
+}
+
+.wrap__content_span {
+    color: red;
+}

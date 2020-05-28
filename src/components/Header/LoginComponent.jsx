@@ -1,7 +1,10 @@
 import React from "react";
 import {Field, reduxForm} from 'redux-form';
 import {connect} from "react-redux";
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import {putLoginThunk} from "../../redux/auth-reducer";
+import {ElementHOC} from "../ComponentForValidators/Textarea";
+import {required} from "../ProfileContent/Utilits/Validators/validator";
+import {Redirect} from "react-router-dom";
 
 
 class LoginForm extends React.Component {
@@ -9,16 +12,17 @@ class LoginForm extends React.Component {
         super(props);
     }
     render() {
+        const Input = ElementHOC('input'); // call in Field component of form
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <div>
-                    <Field component={'input'} name='login' type="text" placeholder={'login'}/>
+                    <Field component={Input} name='email' type="text" placeholder={'login'} validate={[required]}/>
                 </div>
                 <div>
-                    <Field component={'input'} name='password' type="text" placeholder={"password"}/>
+                    <Field component={Input} name='password' type="text" placeholder={"password"} type={'password'} validate={[required]}/>
                 </div>
                 <div>
-                    <Field component={'input'} name='checkbox' type="checkbox"/>
+                    <Field component={Input} name='checkbox' type="checkbox"  />
                 </div>
                 <div>
                     <button>Submit</button>
@@ -33,7 +37,11 @@ const LoginReduxForm = reduxForm({form: 'authorization'})(LoginForm)
 
 export const LoginComponent = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData);
+        let {email, password, checkbox} = {...formData};
+        props.putLoginThunk(email, password, checkbox);
+    }
+    if(props.isLogining){
+        return <Redirect to={'/profile'}/>
     }
     return (
         <div>
@@ -46,6 +54,10 @@ export const LoginComponent = (props) => {
     )
 }
 
+const mapStateToProps = (state) => {
+    return {
+        isLogining: state.AuthData.isLogining
+    }
+}
 
-
-const LoginComponentHOC = connect(mapStateToProps, {})(LoginComponent);
+export const LoginComponentHOC = connect(mapStateToProps, {putLoginThunk})(LoginComponent);

@@ -11,4 +11,8 @@
     position: absolute;
     bottom: 70%;
     right: 10px;
+    transform: translate(-10%,70%);
+}
+.header__loginLink_button {
+    margin-top: 20px;
 }

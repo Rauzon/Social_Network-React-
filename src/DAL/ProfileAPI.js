@@ -19,7 +19,6 @@ export const profileAPI = {
     },
 
     updateStatus(status) {
-        debugger
         return instance.put('profile/status', status);
     }
 }
